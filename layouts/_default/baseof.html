@@ -1,0 +1,17 @@
+{{ partial "head.html" . }}
+  <body class="{{ .Site.Params.themeColor }} {{if .Site.Params.layoutReverse}}layout-reverse{{end}}">
+    {{ partial "sidebar.html" . }}
+
+    <main class="content container">
+      {{ block "main" . -}}{{- end }}
+    </main>
+
+    <div class="bottombar-copyright">
+      &copy; {{ now.Format "2006"}}. All rights reserved.
+    </div>
+
+    {{ if not .Site.IsServer }}
+      {{ partial "analytics.html" . }}
+    {{ end }}
+  </body>
+</html>

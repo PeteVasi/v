@@ -1,0 +1,24 @@
+{{ define "main" -}}
+<h1 class="group-title">{{ .Title }}</h1>
+<h6 class="group-subtitle">{{ .Summary }}</h6>
+<div class="posts">
+  {{ $showpages := .Data.Pages.ByPublishDate.Reverse }}
+  {{ if eq .Section "articles" }}
+    {{ $showpages = .Data.Pages.ByTitle }}
+  {{ end }}
+  {{ range $showpages -}}
+  <article class="post">
+    <h2 class="post-title">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </h2>
+    {{ .Summary | plainify }}
+    <div class="read-more-link">
+      <a href="{{ .RelPermalink }}" class="read-more">Read More…</a>
+      {{ if eq .Section "posts" }}
+        <a href="{{ .RelPermalink }}" class="read-more"><time datetime="{{ .Date.Format "2006-01-02" }}" class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</time></a>
+      {{ end }}
+    </div>
+  </article>
+  {{- end }}
+</div>
+{{- end }}

@@ -1,0 +1,50 @@
+{{ define "main" -}}
+
+<h1 class="group-title">About</h1>
+<div class="posts">
+  <article class="post">
+    I am a Software Architect and Engineer working with web, mobile, and desktop applications.  I
+    have a passion for organization and efficiency, especially in interfaces and scalability.  After
+    doing this awhile, I decided that the stories I was telling could have a wider audience.  I
+    collect them here.
+  </article>
+</div>
+
+{{ range where .Site.Sections "Type" "articles" }}
+  <h1 class="group-title"><a href="{{ .Site.BaseURL }}articles">{{ .Title }}</a></h1>
+  <h6 class="group-subtitle">{{ .Summary }}</h6>
+{{ end }}
+<div class="posts">
+  {{ range where .Site.RegularPages.ByTitle "Section" "articles" -}}
+  <article class="post">
+    <h2 class="post-title">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </h2>
+    {{ .Summary }}
+    <div class="read-more-link">
+      <a href="{{ .RelPermalink }}">Read More…</a>
+    </div>
+  </article>
+  {{- end }}
+</div>
+
+{{ range where .Site.Sections "Type" "posts" }}
+  <h1 class="group-title"><a href="{{ .Site.BaseURL }}articles">{{ .Title }}</a></h1>
+  <h6 class="group-subtitle">{{ .Summary }}</h6>
+{{ end }}
+<div class="posts">
+  {{ range where .Site.RegularPages.ByPublishDate.Reverse "Section" "posts" -}}
+  <article class="post">
+    <h2 class="post-title">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </h2>
+    {{ .Summary | plainify }}
+    <div class="read-more-link">
+      <a href="{{ .RelPermalink }}" class="read-more">Read More…</a>
+      <a href="{{ .RelPermalink }}" class="read-more"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</time></a>
+    </div>
+  </article>
+  {{- end }}
+</div>
+  
+{{- end }}
