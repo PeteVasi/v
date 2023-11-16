@@ -20,7 +20,8 @@
   {{ $style2 := resources.Get "css/poole.css" }}
   {{ $style3 := resources.Get "css/syntax.css" }}
   {{ $style4 := resources.Get "css/hyde.css" }}
-  {{ $css := slice $style1 $style2 $style3 $style4 | resources.Concat "css/style.css" | minify }}
+  {{ $style5 := resources.Get "css/v.css" }}
+  {{ $css := slice $style1 $style2 $style3 $style4 $style5 | resources.Concat "css/style.css" | minify }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700">
 

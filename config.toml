@@ -18,3 +18,15 @@ disableKinds = ['taxonomy', 'term']
 [[Menus.main]]
   Name = 'Resume'
   URL = '/resume/'
+
+[imaging]
+  quality = 75
+  resampleFilter = 'Lanczos'
+  [imaging.exif]
+    disableDate = true
+    disableLatLong = true
+
+[markup]
+  [markup.highlight]
+    lineNos = true
+    style = 'friendly'

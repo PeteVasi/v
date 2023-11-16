@@ -1,0 +1,42 @@
+{{/*
+    Inspiration from these sources:
+    * https://www.brycewray.com/posts/2022/06/responsive-optimized-images-hugo/
+    * https://www.brycewray.com/posts/2023/04/better-code-image-processing-hugo/
+    * https://urbanek.io/post/hugo-lightbox-shortcode/
+*/}}
+
+{{- $src := "" }}
+{{- $srctype := default "page" (.Get "srctype") -}}
+{{- if eq $srctype "global" -}}
+    {{- $src = resources.Get (printf "images/%s" (.Get "src")) -}}
+{{- else -}}
+    {{- $src = .Page.Resources.Get (.Get "src") -}}
+{{- end -}}
+{{- $alt := .Get "alt" -}}
+
+{{- $DIVlayout := "" -}}
+{{- $layout := default "normal" (.Get "layout") -}}
+{{- if eq $layout "center" -}}
+    {{- $DIVlayout = " margin: 0 auto 32px auto;" -}}
+{{- end -}}
+
+{{- $LQIP_img := $src.Resize "20x jpg q20" -}}
+{{- $LQIP_b64 := $LQIP_img.Content | base64Encode -}}
+{{- $thumbImg := $src.Resize "300x jpg" -}}
+{{- $lightboxImg := $src.Resize "1920x jpg" -}}
+{{- $imgBd5 := md5 $src -}}
+{{- $DIVstyle := printf "%s%s%s%d%s%d%s%s" "background: url(data:image/jpeg;base64," $LQIP_b64 "); background-size: cover; background-repeat: no-repeat; width: " $thumbImg.Width "px; height: " $thumbImg.Height "px;" $DIVlayout -}}
+
+<div class="lightbox-thumb" style="{{ $DIVstyle | safeCSS }}">
+    <a href="#{{ $imgBd5 }}-lightbox">
+        <img class="lightbox-thumb-img"
+            src="{{ $thumbImg.RelPermalink }}"
+            width="{{ $thumbImg.Width }}"
+            height="{{ $thumbImg.Height }}"
+            alt="{{ $alt }}"
+            loading="lazy"
+        /></a>
+</div>
+<a href="#_" class="lightbox" id="{{ $imgBd5 }}-lightbox">
+    <img src="{{ $lightboxImg.RelPermalink }}" alt="{{ $alt }}" loading="lazy">
+</a>
