@@ -9,24 +9,24 @@ Awhile ago I had the idea to take Rubik's cubes and build pixel art out of them.
 about how to make a more interesting Zoom background, I stumbled upon [Twist
 Pixel](https://twistpixel.com/) and decided to give it a try.
 
-{{< lightbox src="many-cubes.jpg" alt="Cubes" layout="center" >}}
+{{< lightbox src="many-cubes.jpg" alt="A collection of many Rubik's Cubes on a table" layout="center" >}}
 
 They looked great, so it was time to make a frame to fit.
 
 {{< flexwrap >}}
-    {{< lightbox src="wood-frame.jpg" alt="Cubes" >}}
-    {{< lightbox src="painted-frame.jpg" alt="Cubes" >}}
-    {{< lightbox src="cubes-in-frame.jpg" alt="Cubes" >}}
+    {{< lightbox src="wood-frame.jpg" alt="An unfinished wooden frame" >}}
+    {{< lightbox src="painted-frame.jpg" alt="A painted wooden frame" >}}
+    {{< lightbox src="cubes-in-frame.jpg" alt="Some Rubik's Cubes filling up the bottom of a frame" >}}
 {{< /flexwrap >}}
 
 Getting them all put together was fun too, I've gotten quite good at solving exactly one side of a
 cube.  So far I've changed the design out monthly, we'll see how long I keep up that pace. 
 
 {{< flexwrap >}}
-    {{< lightbox src="cubes.2023.08.jpg" srctype="global" alt="Rubik's cubes art on the wall" >}}
-    {{< lightbox src="cubes.2023.09.jpg" srctype="global" alt="Rubik's cubes art on the wall" >}}
-    {{< lightbox src="cubes.2023.10.jpg" srctype="global" alt="Rubik's cubes art on the wall" >}}
-    {{< lightbox src="cubes.2023.11.jpg" srctype="global" alt="Rubik's cubes art on the wall" >}}
+    {{< lightbox src="cubes.2023.08.jpg" srctype="global" alt="Rubik's cubes as pixel art of Link and an Octorok from Legend of Zelda" >}}
+    {{< lightbox src="cubes.2023.09.jpg" srctype="global" alt="Rubik's cubes as pixel art of the TCG logo for the TCGbay Hackathon 2023" >}}
+    {{< lightbox src="cubes.2023.10.jpg" srctype="global" alt="Rubik's cubes as pixel art of Simon Belmont and a red skeleton from Castlevania" >}}
+    {{< lightbox src="cubes.2023.11.jpg" srctype="global" alt="Rubik's cubes as pixel art of the back of a Magic: The Gathering card" >}}
 {{< /flexwrap >}}
 
 To assist with cube setup, I put together a little brute-force bash to take a 30x30 pixel image and
